@@ -10,6 +10,7 @@ type PostRes struct {
 	Error  string `json:"error"`
 }
 
+// Authenticate authenticates with the device
 func (p *Post) Authenticate() error {
 	payload := map[string]any{
 		"param":    nil,
@@ -23,6 +24,8 @@ func (p *Post) Authenticate() error {
 	return nil
 }
 
+// BoardEnable enables or disables a board
+// BoardEnable(idx []int, enable bool)
 func (p *Post) BoardEnable(idx []int, enable bool) error {
 	payload := map[string]any{
 		"param":    []map[string]any{},
@@ -48,6 +51,7 @@ func (p *Post) BoardEnable(idx []int, enable bool) error {
 	return nil
 }
 
+// ClearHashrate clears the hashrate history of the device
 func (p *Post) ClearHashrate() error {
 	payload := map[string]any{
 		"param":    nil,
@@ -67,6 +71,8 @@ type StratumConfig struct {
 	Pool     string
 }
 
+// Coin sets the coin to mine
+// Coin(confs []StratumConfig, coin string, uniqueId bool)
 func (p *Post) Coin(confs []StratumConfig, coin string, uniqueId bool) error {
 	payload := map[string]any{
 		"param": map[string]any{
@@ -84,6 +90,8 @@ func (p *Post) Coin(confs []StratumConfig, coin string, uniqueId bool) error {
 	return nil
 }
 
+// CriticalTemp sets the critical temperature of the device
+// CriticalTemp(temp int)
 func (p *Post) CriticalTemp(temp int) error {
 	payload := map[string]any{
 		"param":    temp,
@@ -97,6 +105,7 @@ func (p *Post) CriticalTemp(temp int) error {
 	return nil
 }
 
+// DefaultConfig resets the device to its default configuration
 func (p *Post) DefaultConfig() error {
 	payload := map[string]any{
 		"param":    nil,
@@ -110,6 +119,8 @@ func (p *Post) DefaultConfig() error {
 	return nil
 }
 
+// FanSpeed sets the fan speed of the device
+// FanSpeed(idleSpeed, targetTemp int)
 func (p *Post) FanSpeed(idleSpeed, targetTemp int) error {
 	payload := map[string]any{
 		"param": map[string]any{
@@ -128,6 +139,8 @@ func (p *Post) FanSpeed(idleSpeed, targetTemp int) error {
 	return nil
 }
 
+// Id sets the device ID
+// Id(unique bool)
 func (p *Post) Id(unique bool) error {
 	payload := map[string]any{
 		"param":    unique,
@@ -141,6 +154,8 @@ func (p *Post) Id(unique bool) error {
 	return nil
 }
 
+// IdVarient sets the device ID varient
+// IdVarient(varient int)
 func (p *Post) IdVarient(varient int) error {
 	opt := []string{"IpAddress", "MacAddress", "CpuId"}
 
@@ -160,6 +175,8 @@ func (p *Post) IdVarient(varient int) error {
 	return nil
 }
 
+// Identify identifies the device
+// Identify(identify bool)
 func (p *Post) Identify(identify bool) error {
 	payload := map[string]any{
 		"param":    identify,
@@ -173,6 +190,8 @@ func (p *Post) Identify(identify bool) error {
 	return nil
 }
 
+// IdleOnConnectionLost sets the device to idle when the connection is lost
+// IdleOnConnectionLost(idle bool)
 func (p *Post) IdleOnConnectionLost(idle bool) error {
 	payload := map[string]any{
 		"param":    idle,
@@ -186,6 +205,8 @@ func (p *Post) IdleOnConnectionLost(idle bool) error {
 	return nil
 }
 
+// Miner starts or stops the miner
+// Miner(control bool)
 func (p *Post) Miner(control bool) error {
 	var payload map[string]any
 
@@ -208,6 +229,8 @@ func (p *Post) Miner(control bool) error {
 	return nil
 }
 
+// Network sets the network settings of the device
+// Network(dhcp bool)
 func (p *Post) Network(dhcp bool) error {
 	payload := map[string]any{
 		"param": map[string]any{
@@ -223,6 +246,8 @@ func (p *Post) Network(dhcp bool) error {
 	return nil
 }
 
+// Overdrive enables or disables overdrive
+// Overdrive(od bool)
 func (p *Post) Overdrive(od bool) error {
 	payload := map[string]any{
 		"param":    od,
@@ -236,6 +261,8 @@ func (p *Post) Overdrive(od bool) error {
 	return nil
 }
 
+// Password sets the password of the device
+// Password(pass string)
 func (p *Post) Password(pass string) error {
 	payload := map[string]any{
 		"param":    pass,
@@ -251,6 +278,8 @@ func (p *Post) Password(pass string) error {
 	return nil
 }
 
+// PerpetualTune enables or disables perpetual tune
+// PerpetualTune(pt bool)
 func (p *Post) PerpetualTune(pt bool) error {
 	payload := map[string]any{
 		"param":    pt,
@@ -264,6 +293,8 @@ func (p *Post) PerpetualTune(pt bool) error {
 	return nil
 }
 
+// Reboot reboots the device
+// Reboot(delay int)
 func (p *Post) Reboot(delay int) error {
 	payload := map[string]any{
 		"param":    delay,
@@ -277,6 +308,8 @@ func (p *Post) Reboot(delay int) error {
 	return nil
 }
 
+// ShutdownTemp sets the shutdown temperature of the device
+// ShutdownTemp(temp int)
 func (p *Post) ShutdownTemp(temp int) error {
 	payload := map[string]any{
 		"param":    temp,
@@ -290,6 +323,7 @@ func (p *Post) ShutdownTemp(temp int) error {
 	return nil
 }
 
+// SoftReboot soft reboots the device
 func (p *Post) SoftReboot() error {
 	payload := map[string]any{
 		"param":    nil,
@@ -303,6 +337,8 @@ func (p *Post) SoftReboot() error {
 	return nil
 }
 
+// Tune tunes the device
+// Tune(freq, volt float64)
 func (p *Post) Tune(freq, volt float64) error {
 	volt = volt * 1000
 	payload := map[string]any{
@@ -320,6 +356,8 @@ func (p *Post) Tune(freq, volt float64) error {
 	return nil
 }
 
+// TuneClockAll tunes the clock of all boards
+// TuneClockAll(freq float64)
 func (p *Post) TuneClockAll(freq float64) error {
 	payload := map[string]any{
 		"param":    freq,
@@ -338,6 +376,8 @@ type BoardTune struct {
 	Index int
 }
 
+// TuneClockBoard tunes the clock of a specific board
+// TuneClockBoard(settings []BoardTune)
 func (p *Post) TuneClockBoard(settings []BoardTune) error {
 	payload := map[string]any{
 		"param": map[string]any{
@@ -353,6 +393,8 @@ func (p *Post) TuneClockBoard(settings []BoardTune) error {
 	return nil
 }
 
+// TuneVoltage tunes the voltage of the device
+// TuneVoltage(volt float64)
 func (p *Post) TuneVoltage(volt float64) error {
 	payload := map[string]any{
 		"param":    int(volt * 1000),

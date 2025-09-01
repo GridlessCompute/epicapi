@@ -8,6 +8,9 @@ import (
 	"net/http"
 )
 
+// EpicApi is the main struct for the ePIC API wrapper
+// It contains the IP, Port, and Password for the device
+// as well as the Get and Post structs for making API calls
 type EpicApi struct {
 	IP   string
 	Port string
@@ -16,14 +19,19 @@ type EpicApi struct {
 	Post Post
 }
 
+// Get is a struct for making GET requests to the ePIC API
 type Get struct {
 	api *EpicApi
 }
 
+// Post is a struct for making POST requests to the ePIC API
 type Post struct {
 	api *EpicApi
 }
 
+// New creates a new EpicApi struct
+// It takes the IP, Port, and Password for the device
+// and returns a pointer to the new EpicApi struct
 func New(ip, port, password string) *EpicApi {
 	e := &EpicApi{
 		IP:   ip,
@@ -35,6 +43,7 @@ func New(ip, port, password string) *EpicApi {
 	return e
 }
 
+// GET is a helper function for making GET requests to the ePIC API
 func (e *EpicApi) GET(endpoint string) ([]byte, error) {
 	res, err := http.Get(fmt.Sprintf("http://%s:%s/%s", e.IP, e.Port, endpoint))
 	if err != nil {
@@ -55,6 +64,7 @@ func (e *EpicApi) GET(endpoint string) ([]byte, error) {
 	return body, nil
 }
 
+// POST is a helper function for making POST requests to the ePIC API
 func (e *EpicApi) POST(endpoint string, payload map[string]any) error {
 	var r PostRes
 
@@ -93,4 +103,3 @@ func (e *EpicApi) POST(endpoint string, payload map[string]any) error {
 
 	return nil
 }
-

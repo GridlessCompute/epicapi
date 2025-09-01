@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// Capabilities returns a list of the device's capabilities
 func (g *Get) Capabilities() (CapabilitiesResult, error) {
 	var epres CapabilitiesResult
 
@@ -20,6 +21,7 @@ func (g *Get) Capabilities() (CapabilitiesResult, error) {
 	return epres, nil
 }
 
+// Clocks returns the clock speeds of the device
 func (g *Get) Clocks() (ClocksResult, error) {
 	var clcks ClocksResult
 
@@ -35,6 +37,7 @@ func (g *Get) Clocks() (ClocksResult, error) {
 	return clcks, nil
 }
 
+// ClocksConfig returns the clock configuration of the device
 func (g *Get) ClocksConfig() (ClocksConfigResult, error) {
 	var clcksCnfg ClocksConfigResult
 
@@ -50,6 +53,7 @@ func (g *Get) ClocksConfig() (ClocksConfigResult, error) {
 	return clcksCnfg, nil
 }
 
+// Hashrate returns the hashrate of the device
 func (g *Get) Hashrate() (HashrateResult, error) {
 	var hsrt HashrateResult
 
@@ -65,6 +69,7 @@ func (g *Get) Hashrate() (HashrateResult, error) {
 	return hsrt, nil
 }
 
+// HashrateHistoryContinuous returns the continuous hashrate history of the device
 func (g *Get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, error) {
 	var hsrtHstryCnts HashrateHistoryContinuousResult
 
@@ -80,6 +85,7 @@ func (g *Get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, erro
 	return hsrtHstryCnts, nil
 }
 
+// HashrateHistoryDiscrete returns the discrete hashrate history of the device
 func (g *Get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
 	var hsrtHstryDscrt HashrateHistoryDiscreteResult
 
@@ -95,6 +101,7 @@ func (g *Get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
 	return hsrtHstryDscrt, nil
 }
 
+// History returns the history of the device
 func (g *Get) History() (HistoryResult, error) {
 	var hstry HistoryResult
 
@@ -125,6 +132,7 @@ func (g *Get) History() (HistoryResult, error) {
 	return lg, nil
 } */
 
+// Network returns the network settings of the device
 func (g *Get) Network() (NetworkResult, error) {
 	var ntwrk NetworkResult
 
@@ -140,6 +148,7 @@ func (g *Get) Network() (NetworkResult, error) {
 	return ntwrk, nil
 }
 
+// PerpetualTune returns the perpetual tune settings of the device
 func (g *Get) PerpetualTune() (PerpetualTuneResult, error) {
 	var prptlTn PerpetualTuneResult
 
@@ -155,6 +164,7 @@ func (g *Get) PerpetualTune() (PerpetualTuneResult, error) {
 	return prptlTn, nil
 }
 
+// Summary returns a summary of the device
 func (g *Get) Summary() (SummaryResult, error) {
 	var smry SummaryResult
 
@@ -170,6 +180,7 @@ func (g *Get) Summary() (SummaryResult, error) {
 	return smry, nil
 }
 
+// Temps returns the temperatures of the device
 func (g *Get) Temps() (TempsResult, error) {
 	var tmps TempsResult
 
@@ -185,6 +196,7 @@ func (g *Get) Temps() (TempsResult, error) {
 	return tmps, nil
 }
 
+// TempsBoard returns the board temperatures of the device
 func (g *Get) TempsBoard() (TempsBoardResult, error) {
 	var tmpsBrd TempsBoardResult
 
@@ -200,6 +212,7 @@ func (g *Get) TempsBoard() (TempsBoardResult, error) {
 	return tmpsBrd, nil
 }
 
+// TempsChip returns the chip temperatures of the device
 func (g *Get) TempsChip() (TempsChipResult, error) {
 	var tmpsChp TempsChipResult
 
@@ -215,6 +228,7 @@ func (g *Get) TempsChip() (TempsChipResult, error) {
 	return tmpsChp, nil
 }
 
+// Voltages returns the voltages of the device
 func (g *Get) Voltages() (VoltageResult, error) {
 	var vltgs VoltageResult
 
