@@ -15,17 +15,17 @@ type EpicApi struct {
 	ip       string
 	port     string
 	password string
-	get      get
-	post     post
+	get      Get
+	post     Post
 }
 
-// get is a struct for making GET requests to the ePIC API
-type get struct {
+// Get is a struct for making GET requests to the ePIC API
+type Get struct {
 	api *EpicApi
 }
 
-// post is a struct for making POST requests to the ePIC API
-type post struct {
+// Post is a struct for making POST requests to the ePIC API
+type Post struct {
 	api *EpicApi
 }
 
@@ -103,4 +103,3 @@ func (e *EpicApi) POST(endpoint string, payload map[string]any) error {
 
 	return nil
 }
-
