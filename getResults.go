@@ -238,13 +238,13 @@ type SummaryResult struct {
 }
 
 type TempsResult []struct {
-	Data  []int   `json:"Data"`
+	Data  []float64   `json:"Data"`
 	Index float64 `json:"Index"`
 	Total float64 `json:"Total"`
 }
 
 type TempsBoardResult []struct {
-	Data  []int   `json:"Data"`
+	Data  []float64   `json:"Data"`
 	Index float64 `json:"Index"`
 	Total float64 `json:"Total"`
 }
