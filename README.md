@@ -1,4 +1,4 @@
-# epicapi
+# epicapi - UNSTABLE | WORK IN PROGRESS
 ePIC API wrapper for Go
 
 ## Usage
