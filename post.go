@@ -11,10 +11,10 @@ type PostRes struct {
 }
 
 // Authenticate authenticates with the device
-func (p *Post) Authenticate() error {
+func (p *post) Authenticate() error {
 	payload := map[string]any{
 		"param":    nil,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("authenticate", payload); err != nil {
@@ -26,10 +26,10 @@ func (p *Post) Authenticate() error {
 
 // BoardEnable enables or disables a board
 // BoardEnable(idx []int, enable bool)
-func (p *Post) BoardEnable(idx []int, enable bool) error {
+func (p *post) BoardEnable(idx []int, enable bool) error {
 	payload := map[string]any{
 		"param":    []map[string]any{},
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	for _, id := range idx {
@@ -52,10 +52,10 @@ func (p *Post) BoardEnable(idx []int, enable bool) error {
 }
 
 // ClearHashrate clears the hashrate history of the device
-func (p *Post) ClearHashrate() error {
+func (p *post) ClearHashrate() error {
 	payload := map[string]any{
 		"param":    nil,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("clearhashrate", payload); err != nil {
@@ -73,14 +73,14 @@ type StratumConfig struct {
 
 // Coin sets the coin to mine
 // Coin(confs []StratumConfig, coin string, uniqueId bool)
-func (p *Post) Coin(confs []StratumConfig, coin string, uniqueId bool) error {
+func (p *post) Coin(confs []StratumConfig, coin string, uniqueId bool) error {
 	payload := map[string]any{
 		"param": map[string]any{
 			"coin":            coin,
 			"stratum_configs": confs,
 			"unique_id":       uniqueId,
 		},
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("coin", payload); err != nil {
@@ -92,10 +92,10 @@ func (p *Post) Coin(confs []StratumConfig, coin string, uniqueId bool) error {
 
 // CriticalTemp sets the critical temperature of the device
 // CriticalTemp(temp int)
-func (p *Post) CriticalTemp(temp int) error {
+func (p *post) CriticalTemp(temp int) error {
 	payload := map[string]any{
 		"param":    temp,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("criticaltemp", payload); err != nil {
@@ -106,10 +106,10 @@ func (p *Post) CriticalTemp(temp int) error {
 }
 
 // DefaultConfig resets the device to its default configuration
-func (p *Post) DefaultConfig() error {
+func (p *post) DefaultConfig() error {
 	payload := map[string]any{
 		"param":    nil,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("defaultconfig", payload); err != nil {
@@ -121,7 +121,7 @@ func (p *Post) DefaultConfig() error {
 
 // FanSpeed sets the fan speed of the device
 // FanSpeed(idleSpeed, targetTemp int)
-func (p *Post) FanSpeed(idleSpeed, targetTemp int) error {
+func (p *post) FanSpeed(idleSpeed, targetTemp int) error {
 	payload := map[string]any{
 		"param": map[string]any{
 			"Auto": map[string]any{
@@ -129,7 +129,7 @@ func (p *Post) FanSpeed(idleSpeed, targetTemp int) error {
 				"Target Temperature": targetTemp,
 			},
 		},
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("fanspeed", payload); err != nil {
@@ -141,10 +141,10 @@ func (p *Post) FanSpeed(idleSpeed, targetTemp int) error {
 
 // Id sets the device ID
 // Id(unique bool)
-func (p *Post) Id(unique bool) error {
+func (p *post) Id(unique bool) error {
 	payload := map[string]any{
 		"param":    unique,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("id", payload); err != nil {
@@ -156,7 +156,7 @@ func (p *Post) Id(unique bool) error {
 
 // IdVarient sets the device ID varient
 // IdVarient(varient int)
-func (p *Post) IdVarient(varient int) error {
+func (p *post) IdVarient(varient int) error {
 	opt := []string{"IpAddress", "MacAddress", "CpuId"}
 
 	if !(varient > 0) && !(varient < 3) {
@@ -165,7 +165,7 @@ func (p *Post) IdVarient(varient int) error {
 
 	payload := map[string]any{
 		"param":    opt[varient],
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("id/varient", payload); err != nil {
@@ -177,10 +177,10 @@ func (p *Post) IdVarient(varient int) error {
 
 // Identify identifies the device
 // Identify(identify bool)
-func (p *Post) Identify(identify bool) error {
+func (p *post) Identify(identify bool) error {
 	payload := map[string]any{
 		"param":    identify,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("identify", payload); err != nil {
@@ -192,10 +192,10 @@ func (p *Post) Identify(identify bool) error {
 
 // IdleOnConnectionLost sets the device to idle when the connection is lost
 // IdleOnConnectionLost(idle bool)
-func (p *Post) IdleOnConnectionLost(idle bool) error {
+func (p *post) IdleOnConnectionLost(idle bool) error {
 	payload := map[string]any{
 		"param":    idle,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("idleonconnectionlost", payload); err != nil {
@@ -207,18 +207,18 @@ func (p *Post) IdleOnConnectionLost(idle bool) error {
 
 // Miner starts or stops the miner
 // Miner(control bool)
-func (p *Post) Miner(control bool) error {
+func (p *post) Miner(control bool) error {
 	var payload map[string]any
 
 	if control {
 		payload = map[string]any{
 			"param":    "Autostart",
-			"password": p.api.Pass,
+			"password": p.api.password,
 		}
 	} else {
 		payload = map[string]any{
 			"param":    "Stop",
-			"password": p.api.Pass,
+			"password": p.api.password,
 		}
 	}
 
@@ -231,12 +231,12 @@ func (p *Post) Miner(control bool) error {
 
 // Network sets the network settings of the device
 // Network(dhcp bool)
-func (p *Post) Network(dhcp bool) error {
+func (p *post) Network(dhcp bool) error {
 	payload := map[string]any{
 		"param": map[string]any{
 			"dhcp": dhcp,
 		},
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("network", payload); err != nil {
@@ -248,10 +248,10 @@ func (p *Post) Network(dhcp bool) error {
 
 // Overdrive enables or disables overdrive
 // Overdrive(od bool)
-func (p *Post) Overdrive(od bool) error {
+func (p *post) Overdrive(od bool) error {
 	payload := map[string]any{
 		"param":    od,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("overdrive", payload); err != nil {
@@ -263,27 +263,27 @@ func (p *Post) Overdrive(od bool) error {
 
 // Password sets the password of the device
 // Password(pass string)
-func (p *Post) Password(pass string) error {
+func (p *post) Password(pass string) error {
 	payload := map[string]any{
 		"param":    pass,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("password", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
-	p.api.Pass = pass
+	p.api.password = pass
 
 	return nil
 }
 
 // PerpetualTune enables or disables perpetual tune
 // PerpetualTune(pt bool)
-func (p *Post) PerpetualTune(pt bool) error {
+func (p *post) PerpetualTune(pt bool) error {
 	payload := map[string]any{
 		"param":    pt,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("perpetualtune", payload); err != nil {
@@ -295,10 +295,10 @@ func (p *Post) PerpetualTune(pt bool) error {
 
 // Reboot reboots the device
 // Reboot(delay int)
-func (p *Post) Reboot(delay int) error {
+func (p *post) Reboot(delay int) error {
 	payload := map[string]any{
 		"param":    delay,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("reboot", payload); err != nil {
@@ -310,10 +310,10 @@ func (p *Post) Reboot(delay int) error {
 
 // ShutdownTemp sets the shutdown temperature of the device
 // ShutdownTemp(temp int)
-func (p *Post) ShutdownTemp(temp int) error {
+func (p *post) ShutdownTemp(temp int) error {
 	payload := map[string]any{
 		"param":    temp,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("shutdowntemp", payload); err != nil {
@@ -324,10 +324,10 @@ func (p *Post) ShutdownTemp(temp int) error {
 }
 
 // SoftReboot soft reboots the device
-func (p *Post) SoftReboot() error {
+func (p *post) SoftReboot() error {
 	payload := map[string]any{
 		"param":    nil,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("softreboot", payload); err != nil {
@@ -339,14 +339,14 @@ func (p *Post) SoftReboot() error {
 
 // Tune tunes the device
 // Tune(freq, volt float64)
-func (p *Post) Tune(freq, volt float64) error {
+func (p *post) Tune(freq, volt float64) error {
 	volt = volt * 1000
 	payload := map[string]any{
 		"param": map[string]string{
 			"clks":    strconv.FormatFloat(freq, 'f', 2, 64),
 			"voltage": strconv.FormatFloat(volt, 'f', 0, 64),
 		},
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("tune", payload); err != nil {
@@ -358,10 +358,10 @@ func (p *Post) Tune(freq, volt float64) error {
 
 // TuneClockAll tunes the clock of all boards
 // TuneClockAll(freq float64)
-func (p *Post) TuneClockAll(freq float64) error {
+func (p *post) TuneClockAll(freq float64) error {
 	payload := map[string]any{
 		"param":    freq,
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("tune/clock/all", payload); err != nil {
@@ -378,12 +378,12 @@ type BoardTune struct {
 
 // TuneClockBoard tunes the clock of a specific board
 // TuneClockBoard(settings []BoardTune)
-func (p *Post) TuneClockBoard(settings []BoardTune) error {
+func (p *post) TuneClockBoard(settings []BoardTune) error {
 	payload := map[string]any{
 		"param": map[string]any{
 			"v": settings,
 		},
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("tune/clock/board", payload); err != nil {
@@ -395,10 +395,10 @@ func (p *Post) TuneClockBoard(settings []BoardTune) error {
 
 // TuneVoltage tunes the voltage of the device
 // TuneVoltage(volt float64)
-func (p *Post) TuneVoltage(volt float64) error {
+func (p *post) TuneVoltage(volt float64) error {
 	payload := map[string]any{
 		"param":    int(volt * 1000),
-		"password": p.api.Pass,
+		"password": p.api.password,
 	}
 
 	if err := p.api.POST("tune/voltage", payload); err != nil {
@@ -407,3 +407,4 @@ func (p *Post) TuneVoltage(volt float64) error {
 
 	return nil
 }
+

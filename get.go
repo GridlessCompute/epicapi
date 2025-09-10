@@ -6,7 +6,7 @@ import (
 )
 
 // Capabilities returns a list of the device's capabilities
-func (g *Get) Capabilities() (CapabilitiesResult, error) {
+func (g *get) Capabilities() (CapabilitiesResult, error) {
 	var epres CapabilitiesResult
 
 	res, err := g.api.GET("capabilities")
@@ -22,7 +22,7 @@ func (g *Get) Capabilities() (CapabilitiesResult, error) {
 }
 
 // Clocks returns the clock speeds of the device
-func (g *Get) Clocks() (ClocksResult, error) {
+func (g *get) Clocks() (ClocksResult, error) {
 	var clcks ClocksResult
 
 	res, err := g.api.GET("clocks")
@@ -38,7 +38,7 @@ func (g *Get) Clocks() (ClocksResult, error) {
 }
 
 // ClocksConfig returns the clock configuration of the device
-func (g *Get) ClocksConfig() (ClocksConfigResult, error) {
+func (g *get) ClocksConfig() (ClocksConfigResult, error) {
 	var clcksCnfg ClocksConfigResult
 
 	res, err := g.api.GET("clocks/config")
@@ -54,7 +54,7 @@ func (g *Get) ClocksConfig() (ClocksConfigResult, error) {
 }
 
 // Hashrate returns the hashrate of the device
-func (g *Get) Hashrate() (HashrateResult, error) {
+func (g *get) Hashrate() (HashrateResult, error) {
 	var hsrt HashrateResult
 
 	res, err := g.api.GET("hashrate")
@@ -70,7 +70,7 @@ func (g *Get) Hashrate() (HashrateResult, error) {
 }
 
 // HashrateHistoryContinuous returns the continuous hashrate history of the device
-func (g *Get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, error) {
+func (g *get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, error) {
 	var hsrtHstryCnts HashrateHistoryContinuousResult
 
 	res, err := g.api.GET("hashrate/history/continuous")
@@ -86,7 +86,7 @@ func (g *Get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, erro
 }
 
 // HashrateHistoryDiscrete returns the discrete hashrate history of the device
-func (g *Get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
+func (g *get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
 	var hsrtHstryDscrt HashrateHistoryDiscreteResult
 
 	res, err := g.api.GET("hashrate/history/discrete")
@@ -102,7 +102,7 @@ func (g *Get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
 }
 
 // History returns the history of the device
-func (g *Get) History() (HistoryResult, error) {
+func (g *get) History() (HistoryResult, error) {
 	var hstry HistoryResult
 
 	res, err := g.api.GET("history")
@@ -133,7 +133,7 @@ func (g *Get) History() (HistoryResult, error) {
 } */
 
 // Network returns the network settings of the device
-func (g *Get) Network() (NetworkResult, error) {
+func (g *get) Network() (NetworkResult, error) {
 	var ntwrk NetworkResult
 
 	res, err := g.api.GET("network")
@@ -149,7 +149,7 @@ func (g *Get) Network() (NetworkResult, error) {
 }
 
 // PerpetualTune returns the perpetual tune settings of the device
-func (g *Get) PerpetualTune() (PerpetualTuneResult, error) {
+func (g *get) PerpetualTune() (PerpetualTuneResult, error) {
 	var prptlTn PerpetualTuneResult
 
 	res, err := g.api.GET("perpetual-tune")
@@ -165,7 +165,7 @@ func (g *Get) PerpetualTune() (PerpetualTuneResult, error) {
 }
 
 // Summary returns a summary of the device
-func (g *Get) Summary() (SummaryResult, error) {
+func (g *get) Summary() (SummaryResult, error) {
 	var smry SummaryResult
 
 	res, err := g.api.GET("summary")
@@ -181,7 +181,7 @@ func (g *Get) Summary() (SummaryResult, error) {
 }
 
 // Temps returns the temperatures of the device
-func (g *Get) Temps() (TempsResult, error) {
+func (g *get) Temps() (TempsResult, error) {
 	var tmps TempsResult
 
 	res, err := g.api.GET("temps")
@@ -197,7 +197,7 @@ func (g *Get) Temps() (TempsResult, error) {
 }
 
 // TempsBoard returns the board temperatures of the device
-func (g *Get) TempsBoard() (TempsBoardResult, error) {
+func (g *get) TempsBoard() (TempsBoardResult, error) {
 	var tmpsBrd TempsBoardResult
 
 	res, err := g.api.GET("temps/board")
@@ -213,7 +213,7 @@ func (g *Get) TempsBoard() (TempsBoardResult, error) {
 }
 
 // TempsChip returns the chip temperatures of the device
-func (g *Get) TempsChip() (TempsChipResult, error) {
+func (g *get) TempsChip() (TempsChipResult, error) {
 	var tmpsChp TempsChipResult
 
 	res, err := g.api.GET("temps/chip")
@@ -229,7 +229,7 @@ func (g *Get) TempsChip() (TempsChipResult, error) {
 }
 
 // Voltages returns the voltages of the device
-func (g *Get) Voltages() (VoltageResult, error) {
+func (g *get) Voltages() (VoltageResult, error) {
 	var vltgs VoltageResult
 
 	res, err := g.api.GET("voltages")

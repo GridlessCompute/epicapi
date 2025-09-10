@@ -12,20 +12,20 @@ import (
 // It contains the IP, Port, and Password for the device
 // as well as the Get and Post structs for making API calls
 type EpicApi struct {
-	IP   string
-	Port string
-	Pass string
-	Get  Get
-	Post Post
+	ip       string
+	port     string
+	password string
+	get      get
+	post     post
 }
 
-// Get is a struct for making GET requests to the ePIC API
-type Get struct {
+// get is a struct for making GET requests to the ePIC API
+type get struct {
 	api *EpicApi
 }
 
-// Post is a struct for making POST requests to the ePIC API
-type Post struct {
+// post is a struct for making POST requests to the ePIC API
+type post struct {
 	api *EpicApi
 }
 
@@ -34,31 +34,31 @@ type Post struct {
 // and returns a pointer to the new EpicApi struct
 func New(ip, port, password string) *EpicApi {
 	e := &EpicApi{
-		IP:   ip,
-		Port: port,
-		Pass: password,
+		ip:       ip,
+		port:     port,
+		password: password,
 	}
-	e.Get.api = e
-	e.Post.api = e
+	e.get.api = e
+	e.post.api = e
 	return e
 }
 
 // GET is a helper function for making GET requests to the ePIC API
 func (e *EpicApi) GET(endpoint string) ([]byte, error) {
-	res, err := http.Get(fmt.Sprintf("http://%s:%s/%s", e.IP, e.Port, endpoint))
+	res, err := http.Get(fmt.Sprintf("http://%s:%s/%s", e.ip, e.port, endpoint))
 	if err != nil {
-		return nil, fmt.Errorf("error getting 'http://%s:%s/%s' (%w)", e.IP, e.Port, endpoint, err)
+		return nil, fmt.Errorf("error getting 'http://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
 	}
 
 	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
-		return nil, fmt.Errorf("error getting 'http://%s:%s/%s' incorrect status code %s", e.IP, e.Port, endpoint, res.Status)
+		return nil, fmt.Errorf("error getting 'http://%s:%s/%s' incorrect status code %s", e.ip, e.port, endpoint, res.Status)
 	}
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		return nil, fmt.Errorf("error reading res body for 'http://%s:%s/%s' (%w)", e.IP, e.Port, endpoint, err)
+		return nil, fmt.Errorf("error reading res body for 'http://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
 	}
 
 	return body, nil
@@ -70,36 +70,37 @@ func (e *EpicApi) POST(endpoint string, payload map[string]any) error {
 
 	jsonPayload, err := json.Marshal(payload)
 	if err != nil {
-		return fmt.Errorf("error marshaling payload for 'http://%s:%s/%s' (%w)", e.IP, e.Port, endpoint, err)
+		return fmt.Errorf("error marshaling payload for 'http://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
 	}
 
 	res, err := http.Post(
-		fmt.Sprintf("http://%s:%s/%s", e.IP, e.Port, endpoint),
+		fmt.Sprintf("http://%s:%s/%s", e.ip, e.port, endpoint),
 		"application/json",
 		bytes.NewBuffer(jsonPayload),
 	)
 	if err != nil {
-		return fmt.Errorf("error posting to 'http://%s:%s/%s' (%w)", e.IP, e.Port, endpoint, err)
+		return fmt.Errorf("error posting to 'http://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
 	}
 
 	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
-		return fmt.Errorf("error posting to 'http://%s:%s/%s' incorrect status code %s", e.IP, e.Port, endpoint, res.Status)
+		return fmt.Errorf("error posting to 'http://%s:%s/%s' incorrect status code %s", e.ip, e.port, endpoint, res.Status)
 	}
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		return fmt.Errorf("error reading res body for 'https://%s:%s/%s' (%w)", e.IP, e.Port, endpoint, err)
+		return fmt.Errorf("error reading res body for 'https://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
 	}
 
 	if err := json.Unmarshal(body, &r); err != nil {
-		return fmt.Errorf("error unmarshaling res body for 'https://%s:%s/%s' (%w)", e.IP, e.Port, endpoint, err)
+		return fmt.Errorf("error unmarshaling res body for 'https://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
 	}
 
 	if !r.Result {
-		return fmt.Errorf("post returned command failure for 'https://%s:%s/%s' Result: %s", e.IP, e.Port, endpoint, r.Error)
+		return fmt.Errorf("post returned command failure for 'https://%s:%s/%s' Result: %s", e.ip, e.port, endpoint, r.Error)
 	}
 
 	return nil
 }
+
