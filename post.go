@@ -17,7 +17,7 @@ func (p *Post) Authenticate() error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("authenticate", payload); err != nil {
+	if err := p.api.post("authenticate", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -44,7 +44,7 @@ func (p *Post) BoardEnable(idx []int, enable bool) error {
 		payload["param"] = pr
 	}
 
-	if err := p.api.POST("boardenable", payload); err != nil {
+	if err := p.api.post("boardenable", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -58,7 +58,7 @@ func (p *Post) ClearHashrate() error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("clearhashrate", payload); err != nil {
+	if err := p.api.post("clearhashrate", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -83,7 +83,7 @@ func (p *Post) Coin(confs []StratumConfig, coin string, uniqueId bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("coin", payload); err != nil {
+	if err := p.api.post("coin", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -98,7 +98,7 @@ func (p *Post) CriticalTemp(temp int) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("criticaltemp", payload); err != nil {
+	if err := p.api.post("criticaltemp", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -112,7 +112,7 @@ func (p *Post) DefaultConfig() error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("defaultconfig", payload); err != nil {
+	if err := p.api.post("defaultconfig", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -132,7 +132,7 @@ func (p *Post) FanSpeed(idleSpeed, targetTemp int) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("fanspeed", payload); err != nil {
+	if err := p.api.post("fanspeed", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -147,7 +147,7 @@ func (p *Post) Id(unique bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("id", payload); err != nil {
+	if err := p.api.post("id", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -168,7 +168,7 @@ func (p *Post) IdVarient(varient int) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("id/varient", payload); err != nil {
+	if err := p.api.post("id/varient", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -183,7 +183,7 @@ func (p *Post) Identify(identify bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("identify", payload); err != nil {
+	if err := p.api.post("identify", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -198,7 +198,7 @@ func (p *Post) IdleOnConnectionLost(idle bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("idleonconnectionlost", payload); err != nil {
+	if err := p.api.post("idleonconnectionlost", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -222,7 +222,7 @@ func (p *Post) Miner(control bool) error {
 		}
 	}
 
-	if err := p.api.POST("miner", payload); err != nil {
+	if err := p.api.post("miner", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -239,7 +239,7 @@ func (p *Post) Network(dhcp bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("network", payload); err != nil {
+	if err := p.api.post("network", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -254,7 +254,7 @@ func (p *Post) Overdrive(od bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("overdrive", payload); err != nil {
+	if err := p.api.post("overdrive", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -269,7 +269,7 @@ func (p *Post) Password(pass string) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("password", payload); err != nil {
+	if err := p.api.post("password", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -286,7 +286,7 @@ func (p *Post) PerpetualTune(pt bool) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("perpetualtune", payload); err != nil {
+	if err := p.api.post("perpetualtune", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -301,7 +301,7 @@ func (p *Post) Reboot(delay int) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("reboot", payload); err != nil {
+	if err := p.api.post("reboot", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -316,7 +316,7 @@ func (p *Post) ShutdownTemp(temp int) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("shutdowntemp", payload); err != nil {
+	if err := p.api.post("shutdowntemp", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -330,7 +330,7 @@ func (p *Post) SoftReboot() error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("softreboot", payload); err != nil {
+	if err := p.api.post("softreboot", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -349,7 +349,7 @@ func (p *Post) Tune(freq, volt float64) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("tune", payload); err != nil {
+	if err := p.api.post("tune", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -364,7 +364,7 @@ func (p *Post) TuneClockAll(freq float64) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("tune/clock/all", payload); err != nil {
+	if err := p.api.post("tune/clock/all", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -386,7 +386,7 @@ func (p *Post) TuneClockBoard(settings []BoardTune) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("tune/clock/board", payload); err != nil {
+	if err := p.api.post("tune/clock/board", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
@@ -401,10 +401,9 @@ func (p *Post) TuneVoltage(volt float64) error {
 		"password": p.api.password,
 	}
 
-	if err := p.api.POST("tune/voltage", payload); err != nil {
+	if err := p.api.post("tune/voltage", payload); err != nil {
 		return fmt.Errorf("%w", err)
 	}
 
 	return nil
 }
-

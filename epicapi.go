@@ -15,8 +15,8 @@ type EpicApi struct {
 	ip       string
 	port     string
 	password string
-	get      Get
-	post     Post
+	Get      Get
+	Post     Post
 }
 
 // Get is a struct for making GET requests to the ePIC API
@@ -38,13 +38,13 @@ func New(ip, port, password string) *EpicApi {
 		port:     port,
 		password: password,
 	}
-	e.get.api = e
-	e.post.api = e
+	e.Get.api = e
+	e.Post.api = e
 	return e
 }
 
-// GET is a helper function for making GET requests to the ePIC API
-func (e *EpicApi) GET(endpoint string) ([]byte, error) {
+// get is a helper function for making get requests to the ePIC API
+func (e *EpicApi) get(endpoint string) ([]byte, error) {
 	res, err := http.Get(fmt.Sprintf("http://%s:%s/%s", e.ip, e.port, endpoint))
 	if err != nil {
 		return nil, fmt.Errorf("error getting 'http://%s:%s/%s' (%w)", e.ip, e.port, endpoint, err)
@@ -64,8 +64,8 @@ func (e *EpicApi) GET(endpoint string) ([]byte, error) {
 	return body, nil
 }
 
-// POST is a helper function for making POST requests to the ePIC API
-func (e *EpicApi) POST(endpoint string, payload map[string]any) error {
+// post is a helper function for making post requests to the ePIC API
+func (e *EpicApi) post(endpoint string, payload map[string]any) error {
 	var r PostRes
 
 	jsonPayload, err := json.Marshal(payload)

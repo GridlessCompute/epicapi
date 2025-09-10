@@ -9,7 +9,7 @@ import (
 func (g *Get) Capabilities() (CapabilitiesResult, error) {
 	var epres CapabilitiesResult
 
-	res, err := g.api.GET("capabilities")
+	res, err := g.api.get("capabilities")
 	if err != nil {
 		return CapabilitiesResult{}, fmt.Errorf("%w", err)
 	}
@@ -25,7 +25,7 @@ func (g *Get) Capabilities() (CapabilitiesResult, error) {
 func (g *Get) Clocks() (ClocksResult, error) {
 	var clcks ClocksResult
 
-	res, err := g.api.GET("clocks")
+	res, err := g.api.get("clocks")
 	if err != nil {
 		return ClocksResult{}, fmt.Errorf("%w", err)
 	}
@@ -41,7 +41,7 @@ func (g *Get) Clocks() (ClocksResult, error) {
 func (g *Get) ClocksConfig() (ClocksConfigResult, error) {
 	var clcksCnfg ClocksConfigResult
 
-	res, err := g.api.GET("clocks/config")
+	res, err := g.api.get("clocks/config")
 	if err != nil {
 		return ClocksConfigResult{}, fmt.Errorf("%w", err)
 	}
@@ -57,7 +57,7 @@ func (g *Get) ClocksConfig() (ClocksConfigResult, error) {
 func (g *Get) Hashrate() (HashrateResult, error) {
 	var hsrt HashrateResult
 
-	res, err := g.api.GET("hashrate")
+	res, err := g.api.get("hashrate")
 	if err != nil {
 		return HashrateResult{}, fmt.Errorf("%w", err)
 	}
@@ -73,7 +73,7 @@ func (g *Get) Hashrate() (HashrateResult, error) {
 func (g *Get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, error) {
 	var hsrtHstryCnts HashrateHistoryContinuousResult
 
-	res, err := g.api.GET("hashrate/history/continuous")
+	res, err := g.api.get("hashrate/history/continuous")
 	if err != nil {
 		return HashrateHistoryContinuousResult{}, fmt.Errorf("%w", err)
 	}
@@ -89,7 +89,7 @@ func (g *Get) HashrateHistoryContinuous() (HashrateHistoryContinuousResult, erro
 func (g *Get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
 	var hsrtHstryDscrt HashrateHistoryDiscreteResult
 
-	res, err := g.api.GET("hashrate/history/discrete")
+	res, err := g.api.get("hashrate/history/discrete")
 	if err != nil {
 		return HashrateHistoryDiscreteResult{}, fmt.Errorf("%w", err)
 	}
@@ -105,7 +105,7 @@ func (g *Get) HashrateHistoryDiscrete() (HashrateHistoryDiscreteResult, error) {
 func (g *Get) History() (HistoryResult, error) {
 	var hstry HistoryResult
 
-	res, err := g.api.GET("history")
+	res, err := g.api.get("history")
 	if err != nil {
 		return HistoryResult{}, fmt.Errorf("%w", err)
 	}
@@ -136,7 +136,7 @@ func (g *Get) History() (HistoryResult, error) {
 func (g *Get) Network() (NetworkResult, error) {
 	var ntwrk NetworkResult
 
-	res, err := g.api.GET("network")
+	res, err := g.api.get("network")
 	if err != nil {
 		return NetworkResult{}, fmt.Errorf("%w", err)
 	}
@@ -152,7 +152,7 @@ func (g *Get) Network() (NetworkResult, error) {
 func (g *Get) PerpetualTune() (PerpetualTuneResult, error) {
 	var prptlTn PerpetualTuneResult
 
-	res, err := g.api.GET("perpetual-tune")
+	res, err := g.api.get("perpetual-tune")
 	if err != nil {
 		return PerpetualTuneResult{}, fmt.Errorf("%w", err)
 	}
@@ -168,7 +168,7 @@ func (g *Get) PerpetualTune() (PerpetualTuneResult, error) {
 func (g *Get) Summary() (SummaryResult, error) {
 	var smry SummaryResult
 
-	res, err := g.api.GET("summary")
+	res, err := g.api.get("summary")
 	if err != nil {
 		return SummaryResult{}, fmt.Errorf("%w", err)
 	}
@@ -184,7 +184,7 @@ func (g *Get) Summary() (SummaryResult, error) {
 func (g *Get) Temps() (TempsResult, error) {
 	var tmps TempsResult
 
-	res, err := g.api.GET("temps")
+	res, err := g.api.get("temps")
 	if err != nil {
 		return TempsResult{}, fmt.Errorf("%w", err)
 	}
@@ -200,7 +200,7 @@ func (g *Get) Temps() (TempsResult, error) {
 func (g *Get) TempsBoard() (TempsBoardResult, error) {
 	var tmpsBrd TempsBoardResult
 
-	res, err := g.api.GET("temps/board")
+	res, err := g.api.get("temps/board")
 	if err != nil {
 		return TempsBoardResult{}, fmt.Errorf("%w", err)
 	}
@@ -216,7 +216,7 @@ func (g *Get) TempsBoard() (TempsBoardResult, error) {
 func (g *Get) TempsChip() (TempsChipResult, error) {
 	var tmpsChp TempsChipResult
 
-	res, err := g.api.GET("temps/chip")
+	res, err := g.api.get("temps/chip")
 	if err != nil {
 		return TempsChipResult{}, fmt.Errorf("%w", err)
 	}
@@ -232,7 +232,7 @@ func (g *Get) TempsChip() (TempsChipResult, error) {
 func (g *Get) Voltages() (VoltageResult, error) {
 	var vltgs VoltageResult
 
-	res, err := g.api.GET("voltages")
+	res, err := g.api.get("voltages")
 	if err != nil {
 		return VoltageResult{}, fmt.Errorf("%w", err)
 	}
