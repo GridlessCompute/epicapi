@@ -146,14 +146,14 @@ type SummaryResult struct {
 		WorkerUniqueIDVariant string  `json:"Worker Unique Id Variant"` // Variant of worker unique ID.
 	} `json:"Stratum"`
 	Session struct {
-		StartupTimestamp           float64 `json:"Startup Timestamp"`             // Timestamp of miner startup.
-		StartupString              string  `json:"Startup String"`                // Startup string.
-		Uptime                     float64 `json:"Uptime"`                        // Miner uptime in seconds.
-		LastWorkTimestamp          float64 `json:"Last Work Timestamp"`           // Timestamp of last work.
-		WorkReceived               float64 `json:"WorkReceived"`                  // Number of work received.
-		ActiveHBs                  float64 `json:"Active HBs"`                    // Number of active hash boards.
-		AverageMHs                 float64 `json:"Average MHs"`                   // Average hashrate in MH/s.
-		LastAverageMHs             float64 `json:"LastAverageMHs"`                // Last average hashrate.
+		StartupTimestamp  float64 `json:"Startup Timestamp"`   // Timestamp of miner startup.
+		StartupString     string  `json:"Startup String"`      // Startup string.
+		Uptime            float64 `json:"Uptime"`              // Miner uptime in seconds.
+		LastWorkTimestamp float64 `json:"Last Work Timestamp"` // Timestamp of last work.
+		WorkReceived      float64 `json:"WorkReceived"`        // Number of work received.
+		ActiveHBs         float64 `json:"Active HBs"`          // Number of active hash boards.
+		AverageMHs        float64 `json:"Average MHs"`         // Average hashrate in MH/s.
+		// LastAverageMHs             float64 `json:"LastAverageMHs"`                // Last average hashrate.
 		Accepted                   float64 `json:"Accepted"`                      // Number of accepted shares.
 		Rejected                   float64 `json:"Rejected"`                      // Number of rejected shares.
 		Submitted                  float64 `json:"Submitted"`                     // Number of submitted shares.
@@ -238,15 +238,15 @@ type SummaryResult struct {
 }
 
 type TempsResult []struct {
-	Data  []float64   `json:"Data"`
-	Index float64 `json:"Index"`
-	Total float64 `json:"Total"`
+	Data  []float64 `json:"Data"`
+	Index float64   `json:"Index"`
+	Total float64   `json:"Total"`
 }
 
 type TempsBoardResult []struct {
-	Data  []float64   `json:"Data"`
-	Index float64 `json:"Index"`
-	Total float64 `json:"Total"`
+	Data  []float64 `json:"Data"`
+	Index float64   `json:"Index"`
+	Total float64   `json:"Total"`
 }
 
 type TempsChipResult []struct {
